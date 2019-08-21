@@ -24,7 +24,7 @@ int main()
 	////void : 형이 정해지지않았다 즉, 바꿀수있다.
 	//float* b = (float*)malloc(n * sizeof(float));
 
-	////malloc과 free는 같이쓰게될것임, malloc을 쓰면 hip영역에서 처리를 하는데 free를 해서 해당변수를 해방시켜줘야함.
+	////malloc과 free는 같이쓰게될것임, malloc을 쓰면 hip영역에서 처리를 하는데 free를 해서 해당변수를 해방시켜줘야함. 
 
 	//for (int i = 0; i < n; i++)
 	//{

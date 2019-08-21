@@ -14,6 +14,7 @@ int main()
 }*/
 #include <stdio.h>
 
+
 int main()
 {
 	// 인자 확인 : Ctrl + Shift + Spacebar

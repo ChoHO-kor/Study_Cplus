@@ -8,5 +8,6 @@ public:
 	int X;
 	int Y;
 
-	char shape;
+	char Shape;
+	void Render();
 };

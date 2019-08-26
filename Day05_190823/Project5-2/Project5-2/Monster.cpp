@@ -11,6 +11,7 @@ Monster::Monster()
 	X = 5;
 	Y = 5;
 	Shape = 'M';
+
 }
 
 
@@ -22,8 +23,10 @@ void Monster::initialize()
 {
 }
 
+//몬스터별 다른 행동패턴
 void Monster::Move(class Map* map)
 {
+
 	int NewX = X;
 	int NewY = Y;
 
@@ -32,19 +35,19 @@ void Monster::Move(class Map* map)
 
 	if (Direction == 0)
 	{
-		Y--;
+		NewY--;
 	}
 	else if (Direction == 1)
 	{
-		Y++;
+		NewY++;
 	}
 	else if (Direction == 2)
 	{
-		X--;
+		NewX--;
 	}
 	else if (Direction == 3)
 	{
-		X++;
+		NewX++;
 	}
 
 	if (map->data[NewY][NewX] == 0)

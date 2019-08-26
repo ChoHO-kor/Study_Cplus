@@ -1,4 +1,4 @@
-#include "Engine.h"
+﻿#include "Engine.h"
 #include <iostream>
 #include "Player.h"
 #include "Map.h"
@@ -7,14 +7,24 @@
 #include <conio.h>
 #include "GameMode.h"
 
+
 Engine::Engine()
 {
 	bIsRunning = true;
-	std::cout << "Engine Constructor" << std::endl;
+	std::cout << "###################게임 시작#######################Engine Constructor" << std::endl;
 
 	player = new Player();
 	goal = new Goal();
-	monster = new Monster();
+
+	monsters.push_back(new Monster());
+	monsters.push_back(new Monster());
+	monsters.push_back(new Monster());
+	monsters.push_back(new Monster());
+
+	//monster = new Monster();
+	//monster2 = new Monster();
+	//monster2->Shape = 'N';
+
 	map = new Map();
 	gamemode = new GameMode();
 
@@ -26,14 +36,24 @@ Engine::~Engine()
 	player = nullptr;
 	delete goal;
 	goal = nullptr;
-	delete monster;
-	monster = nullptr;
+
+	//메모리 누수정리
+	for (auto monster : monsters)
+	{
+		delete monster;
+		monster = nullptr;
+	}
+	//벡터 삭제
+	monsters.erase(monsters.begin(), monsters.end());
+
+	//delete monster;
+	//monster = nullptr;
 	delete map;
 	map = nullptr;
 	delete gamemode;
 	gamemode = nullptr;
 	system("cls");
-	std::cout << "############################## Engine Destructor ###############################" << std::endl;
+	std::cout << "##############################게임 오버###############################Engine Destructor" << std::endl;
 
 }
 
@@ -44,7 +64,7 @@ void Engine::Input()
 
 void Engine::Tick()
 {
-	//����
+	//종료
 	if (KeyCode == 'q')
 	{
 		bIsRunning = false;
@@ -55,8 +75,16 @@ void Engine::Tick()
 	}
 
 	player->Move(KeyCode, map);
-	monster->Move(map);
-	EGameOverType result = gamemode->CheckRule(player, monster, goal);
+	
+	for (auto monster : monsters)
+	{
+		monster->Move(map);
+
+	}
+	//monster->Move(map);
+	//monster2->Move(map);
+
+	/*EGameOverType result = gamemode->CheckRule(player, monster, goal);
 	switch (result)
 	{
 	case EGameOverType::Dead:
@@ -72,9 +100,25 @@ void Engine::Tick()
 	default:
 		break;
 	}
+	EGameOverType result2 = gamemode->CheckRule(player, monster2, goal);
+	switch (result2)
+	{
+	case EGameOverType::Dead:
+	{
+		bIsRunning = false;
+	}
+	break;
+	case EGameOverType::Escape:
+	{
+		bIsRunning = false;
+	}
+	break;
+	default:
+		break;
+	}*/
 
 	//int result = gamemode->CheckRule(player, monster,goal);
-	////1 : Ż�� ,-1 : ���� 
+	////1 : 탈출 ,-1 : 죽음 
 	//if (result == 1)
 	//{
 	//	bIsRunning = false;
@@ -90,7 +134,14 @@ void Engine::Render()
 {
 	map->Render();
 	player->Render();
-	monster->Render();
+
+	for (auto monster : monsters)
+	{
+		monster->Render();
+	}
+	//monster->Render();
+	//monster2->Render();
+	goal->Render();
 }
 
 void Engine::Run()

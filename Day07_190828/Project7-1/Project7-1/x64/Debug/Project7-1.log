@@ -1,0 +1,19 @@
+﻿  Actor.cpp
+c:\cho\project\study_cpp\day07_190828\project7-1\project7-1\actor.cpp(25): warning C4129: 'm': 문자 이스케이프 시퀀스를 인식할 수 없습니다.
+  Character.cpp
+  Engine.cpp
+  GameMode.cpp
+  GameplayStatics.cpp
+  Goal.cpp
+  Goblin.cpp
+  main.cpp
+  Map.cpp
+  Map2.cpp
+  MapBase.cpp
+  Monster.cpp
+c:\cho\project\study_cpp\day07_190828\project7-1\project7-1\monster.cpp(14): warning C4244: '인수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Player.cpp
+  Slime.cpp
+  WildPig.cpp
+  코드를 생성하고 있습니다...
+  Project7-1.vcxproj -> C:\Cho\Project\Study_Cpp\Day07_190828\Project7-1\x64\Debug\Project7-1.exe
